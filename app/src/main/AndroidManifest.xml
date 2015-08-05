@@ -16,6 +16,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".widgets.MusicWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/music_widget_info" />
+        </receiver>
+        <receiver android:name=".receivers.MusicReceiver"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="com.example.dariofernando.musicapp.play"/>
+                <action android:name="com.example.dariofernando.musicapp.pause"/>
+                <action android:name="com.example.dariofernando.musicapp.stop"/>
+            </intent-filter>
+
+
+        </receiver>
+        <service android:name=".service.MusicService" android:exported="false"/>
     </application>
 
 </manifest>
